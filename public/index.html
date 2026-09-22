@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Us — where conversations flow</title>
+  <meta name="description" content="Join Us — a modern real-time chat. Blue, smooth, alive." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M24 4C13 4 4 11.7 4 21.3c0 5.5 3 10.4 7.7 13.7-.4 2.3-1.7 4.9-3.2 6.4 0 0 4.9.2 9-2.3 2.1.6 4.3.9 6.5.9 11 0 20-7.7 20-17.3S35 4 24 4Z' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='21' r='2.6' fill='%23051026'/%3E%3Ccircle cx='24' cy='21' r='2.6' fill='%23051026'/%3E%3Ccircle cx='32' cy='21' r='2.6' fill='%23051026'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- ambient background -->
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <!-- ══════════════════ AUTH VIEW ══════════════════ -->
+  <section id="view-auth" class="view auth-view">
+    <div class="auth-grid">
+      <!-- hero -->
+      <div class="hero-panel">
+        <div class="brand">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="30" height="30"><defs><linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs><path d="M24 4C13 4 4 11.7 4 21.3c0 5.5 3 10.4 7.7 13.7-.4 2.3-1.7 4.9-3.2 6.4 0 0 4.9.2 9-2.3 2.1.6 4.3.9 6.5.9 11 0 20-7.7 20-17.3S35 4 24 4Z" fill="url(#lg1)"/><circle cx="16" cy="21" r="2.6" fill="#051026"/><circle cx="24" cy="21" r="2.6" fill="#051026"/><circle cx="32" cy="21" r="2.6" fill="#051026"/></svg>
+          </span>
+          <span class="brand-name">Join&nbsp;Us</span>
+          <span id="mode-badge" class="mode-badge" hidden></span>
+        </div>
+
+        <h1 class="hero-title">Where<br />conversations <em>flow.</em></h1>
+        <p class="hero-sub">
+          A calm, modern space for your people. Real-time messages,
+          gentle admin control, and a design that stays out of the way.
+        </p>
+
+        <ul class="hero-features">
+          <li>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg>
+            Instant, real-time messaging
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+            Admin tools built right in
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            Persistent history with Supabase
+          </li>
+        </ul>
+
+        <figure class="hero-art">
+          <img src="/assets/hero.png" alt="Abstract blue waves with floating chat bubbles" loading="lazy" />
+          <figcaption class="hero-art-chip">
+            <span class="pulse-dot"></span> live now
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- auth card -->
+      <div class="auth-panel">
+        <div class="auth-card">
+          <div class="tabs" role="tablist">
+            <button id="tab-login" class="tab active" role="tab" aria-selected="true">Sign in</button>
+            <button id="tab-register" class="tab" role="tab" aria-selected="false">Create account</button>
+            <span class="tab-ink" aria-hidden="true"></span>
+          </div>
+
+          <!-- login -->
+          <form id="form-login" class="auth-form" autocomplete="on" novalidate>
+            <label class="field">
+              <span class="field-label">Username</span>
+              <input name="username" type="text" placeholder="e.g. bluewhale" autocomplete="username" required minlength="3" maxlength="20" />
+            </label>
+            <label class="field">
+              <span class="field-label">Password</span>
+              <div class="password-wrap">
+                <input name="password" type="password" placeholder="Your password" autocomplete="current-password" required minlength="6" />
+                <button type="button" class="eye" data-toggle-password aria-label="Show password">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </label>
+            <p class="auth-error" data-error hidden></p>
+            <button class="btn btn-primary btn-block" type="submit" data-loading-label="Signing in…">Sign in</button>
+          </form>
+
+          <!-- register -->
+          <form id="form-register" class="auth-form" autocomplete="on" novalidate hidden>
+            <label class="field">
+              <span class="field-label">Username</span>
+              <input name="username" type="text" placeholder="3–20 letters, numbers or _" autocomplete="username" required minlength="3" maxlength="20" pattern="[A-Za-z0-9_]{3,20}" />
+            </label>
+            <label class="field">
+              <span class="field-label">Display name <span class="optional">optional</span></span>
+              <input name="displayName" type="text" placeholder="How people see you" maxlength="30" />
+            </label>
+            <label class="field">
+              <span class="field-label">Password</span>
+              <div class="password-wrap">
+                <input name="password" type="password" placeholder="At least 6 characters" autocomplete="new-password" required minlength="6" />
+                <button type="button" class="eye" data-toggle-password aria-label="Show password">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </label>
+            <p class="auth-error" data-error hidden></p>
+            <button class="btn btn-primary btn-block" type="submit" data-loading-label="Creating account…">Create account</button>
+            <p class="fine-print">The very first account on a fresh server becomes the admin.</p>
+          </form>
+
+          <div id="demo-hint" class="demo-hint" hidden>
+            <strong>Demo accounts</strong>
+            <button class="demo-cred" data-fill="admin|admin123"><span>admin</span> · admin123 <em>administrator</em></button>
+            <button class="demo-cred" data-fill="alice|alice123"><span>alice</span> · alice123 <em>member</em></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CHAT VIEW ══════════════════ -->
+  <section id="view-chat" class="view chat-view" hidden>
+    <header class="chat-header">
+      <div class="header-left">
+        <button id="btn-sidebar" class="icon-btn sidebar-toggle" aria-label="Toggle members list">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </button>
+        <div class="brand small">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="26" height="26"><path d="M24 4C13 4 4 11.7 4 21.3c0 5.5 3 10.4 7.7 13.7-.4 2.3-1.7 4.9-3.2 6.4 0 0 4.9.2 9-2.3 2.1.6 4.3.9 6.5.9 11 0 20-7.7 20-17.3S35 4 24 4Z" fill="url(#lg1)"/><circle cx="16" cy="21" r="2.6" fill="#051026"/><circle cx="24" cy="21" r="2.6" fill="#051026"/><circle cx="32" cy="21" r="2.6" fill="#051026"/></svg>
+          </span>
+          <span class="brand-name">Join&nbsp;Us</span>
+        </div>
+        <span class="room-chip">#&nbsp;lobby</span>
+      </div>
+
+      <div class="header-right">
+        <span id="conn-status" class="conn-status"><span class="conn-dot"></span><span class="conn-label">connecting</span></span>
+        <button id="btn-admin" class="btn btn-ghost" hidden>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          Admin
+        </button>
+        <div class="user-chip" id="user-chip">
+          <span class="avatar xs" id="me-avatar">?</span>
+          <span class="user-chip-name" id="me-name">…</span>
+          <button id="btn-logout" class="icon-btn" aria-label="Sign out" title="Sign out">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div id="announcement" class="announcement" hidden>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+      <span id="announcement-text"></span>
+      <button id="btn-dismiss-announcement" class="icon-btn sm" aria-label="Dismiss announcement">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="chat-main">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-head">
+          <h2>Online</h2>
+          <span id="online-count" class="count-pill">0</span>
+        </div>
+        <ul id="user-list" class="user-list"></ul>
+      </aside>
+      <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+
+      <section class="chat-col">
+        <div id="messages" class="messages" aria-live="polite">
+          <div class="empty-state" id="empty-state" hidden>
+            <div class="empty-logo">
+              <svg viewBox="0 0 48 48" width="44" height="44"><path d="M24 4C13 4 4 11.7 4 21.3c0 5.5 3 10.4 7.7 13.7-.4 2.3-1.7 4.9-3.2 6.4 0 0 4.9.2 9-2.3 2.1.6 4.3.9 6.5.9 11 0 20-7.7 20-17.3S35 4 24 4Z" fill="url(#lg1)"/><circle cx="16" cy="21" r="2.6" fill="#051026"/><circle cx="24" cy="21" r="2.6" fill="#051026"/><circle cx="32" cy="21" r="2.6" fill="#051026"/></svg>
+            </div>
+            <h3>No messages yet</h3>
+            <p>Be the first to break the ice 🧊</p>
+          </div>
+        </div>
+        <div id="typing" class="typing" hidden></div>
+        <button id="jump-pill" class="jump-pill" hidden>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+          New messages
+        </button>
+
+        <form id="composer" class="composer" autocomplete="off">
+          <input id="composer-input" type="text" placeholder="Message #lobby…" maxlength="500" aria-label="Message" />
+          <button class="btn btn-send" type="submit" aria-label="Send message">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></svg>
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <!-- admin drawer -->
+    <div id="admin-overlay" class="drawer-overlay" hidden></div>
+    <aside id="admin-drawer" class="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <h2>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          Admin control
+        </h2>
+        <button id="btn-close-admin" class="icon-btn" aria-label="Close admin panel">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="tabs small" role="tablist">
+        <button id="admin-tab-users" class="tab active" role="tab">Members</button>
+        <button id="admin-tab-controls" class="tab" role="tab">Controls</button>
+        <span class="tab-ink" aria-hidden="true"></span>
+      </div>
+
+      <div id="admin-panel-users" class="drawer-body">
+        <ul id="admin-user-list" class="admin-user-list"></ul>
+      </div>
+
+      <div id="admin-panel-controls" class="drawer-body" hidden>
+        <form id="form-announce" class="announce-form">
+          <label class="field">
+            <span class="field-label">Broadcast announcement</span>
+            <input name="text" type="text" placeholder="Something everyone should see…" maxlength="200" />
+          </label>
+          <button class="btn btn-secondary btn-block" type="submit">Send announcement</button>
+        </form>
+        <div class="danger-zone">
+          <h3>Danger zone</h3>
+          <p>Remove every message in the lobby. This cannot be undone.</p>
+          <button id="btn-clear-chat" class="btn btn-danger btn-block">Clear all messages</button>
+        </div>
+      </div>
+    </aside>
+
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+  </section>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
